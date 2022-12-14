@@ -33,6 +33,11 @@ public class UserController {
         this.productService = productService;
     }
 
+    @GetMapping ("/")
+    public String index_main(Model model) {
+        return "redirect:/product";
+    }
+
     @GetMapping("/index")
     public String index(Model model) {
 
@@ -47,6 +52,7 @@ public class UserController {
         }
         model.addAttribute("products", productService.getAllProduct());
         return "user/index";
+
     }
 
     @GetMapping("/cart/add/{id}")

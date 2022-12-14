@@ -6,12 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 @EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -29,21 +31,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SecurityConfig(PersonDetailsService personDetailsService) {
         this.personDetailsService = personDetailsService;
     }
+//
+//    @Override
+//    public void configure(WebSecurity web) throws Exception {
+//        web
+//                ..antMatchers("/product/product");
+//    }
 
     // Конфигурация Spring Security
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        // указываем на какой url адрес фильтр Spring Security будет отправлять не аутентифицированного  пользователь при заходе на защищенную страницу
+        // указываем на какой url адрес фильтр Spring Security будет отправлять не аутентифицированного  пользователь
+        // при заходе на защищенную страницу
         httpSecurity
+//                .antMatcher("/").anonymous().and()
+//                .csrf().disable().cors().and()
+//                .headers().frameOptions().disable().and()
                 // указываем что все страницы будут защищены процессом аутентификации
                 .authorizeRequests()
                 // указываем что страница /admin доступна пользователю с ролью ADMIN
                 .antMatchers("/admin").hasRole("ADMIN")
-                // Указыаем что данные страницы доступна все пользователям
-                .antMatchers("/authentication/login", "/authentication/registration", "/error", "/product", "/img/**", "/product/info/{id}").permitAll()
+                // Указыаем что данные страницы доступна всем пользователям
+                .antMatchers(
+                        "/",
+                        "/authentication/login",
+                        "/authentication/registration",
+                        "/error",
+                        "/product",
+                        "/img/**",
+                        "/product/info/{id}").permitAll()
+//                .antMatchers("/").anonymous()
                 // Указываем что все остальные страницы доступны пользователям с ролью user и admin
                 .anyRequest().hasAnyRole("USER", "ADMIN")
-//                // Указываем что для всех остальных страниц необходимо вызывать метод authenticated(), который открывает форму аутентификации
+//                Указываем что для всех остальных страниц необходимо вызывать метод authenticated(), который
+//                открывает форму аутентификации
 //                .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/authentication/login")
@@ -55,6 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/authentication/login?error")
                 .and()
                 .logout().logoutUrl("/logout").logoutSuccessUrl("/authentication/login");
+//        httpSecurity.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
     }
 
 

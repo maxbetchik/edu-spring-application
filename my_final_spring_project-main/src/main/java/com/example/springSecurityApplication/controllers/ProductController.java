@@ -29,7 +29,7 @@ public class ProductController {
     @GetMapping("/info/{id}")
     public String infoUser(@PathVariable("id") int id, Model model){
         model.addAttribute("product", productService.getProductId(id));
-        return "product/infoProduct";
+        return "/product/infoProduct";
     }
 
     @PostMapping("/search")
