@@ -12,3 +12,5 @@ spring.main.allow-bean-definition-overriding = true
 spring.main.allow-circular-references = true
 
 upload.path = INSERT_PATH_TO_UPLOADS_DIR
+
+Обратить внимание на значение INSERT_......
