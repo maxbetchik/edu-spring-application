@@ -5,6 +5,10 @@
     <title>Список товаров</title>
 </head>
 <body>
+<a href="/authentication/login" style="text-decoration-line: none; font-size: x-large">Авторизация</a>
+<br>
+<a href="/authentication/registration" style="text-decoration-line: none; font-size: x-large">Регистрация</a>
+<br><hr>
 <form th:method="POST" th:action="@{/product/search}">
     <fieldset>
         <legend>Выберите параметр для сортировка: </legend>
@@ -27,11 +31,13 @@
             <label for="descending_price">Отсортировать по убыванию цены</label>
             <input type="radio" id="descending_price" name="price" value="sorted_by_descending_price">
             <p>Категория товаров: </p>
-            <label for="furniture">Мебель</label>
-            <input type="radio" id="furniture" name="contact" value="furniture">
-            <label for="appliances">Бытовая техника</label>
+            <label for="telephone">Телефон</label>
+            <input type="radio" id="telephone" name="contact" value="telephone">
+            <br>
+            <label for="appliances">Планшет</label>
             <input type="radio" id="appliances" name="contact" value="appliances">
-            <label for="clothes">Одежда</label>
+            <br>
+            <label for="clothes">Смартфон</label>
             <input type="radio" id="clothes" name="contact" value="clothes">
             <br>
             <br>

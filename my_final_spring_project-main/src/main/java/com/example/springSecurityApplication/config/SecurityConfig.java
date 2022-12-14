@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/authentication/registration",
                         "/error",
                         "/product",
+                        "/product/search**",
                         "/img/**",
                         "/product/info/{id}").permitAll()
 //                .antMatchers("/").anonymous()

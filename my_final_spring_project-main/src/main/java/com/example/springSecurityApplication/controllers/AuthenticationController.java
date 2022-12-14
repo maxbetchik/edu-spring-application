@@ -97,7 +97,7 @@ public class AuthenticationController {
 //                    if(price.equals("sorted_by_ascending_price")){
 //                        if(!contact.isEmpty())
 //                        {
-//                            if(contact.equals("furniture")){
+//                            if(contact.equals("telephone")){
 //                                model.addAttribute("search_product",
 //                                        productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(),
 //                                                Float.parseFloat(ot),
@@ -121,7 +121,7 @@ public class AuthenticationController {
 //                    else if (price.equals("sorted_by_descending_price")){
 //                        if(!contact.isEmpty())
 //                        {
-//                            if(contact.equals("furniture")){
+//                            if(contact.equals("telephone")){
 //                                model.addAttribute("search_product",
 //                                        productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(),
 //                                                Float.parseFloat(ot),

@@ -39,7 +39,7 @@ public class ProductController {
                 if(price.equals("sorted_by_ascending_price")){
                     if(!contact.isEmpty())
                     {
-                        if(contact.equals("furniture")){
+                        if(contact.equals("telephone")){
                             model.addAttribute("search_product", productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(), Float.parseFloat(ot), Float.parseFloat(Do), 1));
                         } else if(contact.equals("appliances")){
                             model.addAttribute("search_product", productRepository.findByTitleAndCategoryOrderByPriceAsc(search.toLowerCase(), Float.parseFloat(ot), Float.parseFloat(Do), 2));
@@ -51,7 +51,7 @@ public class ProductController {
                 else if (price.equals("sorted_by_descending_price")){
                     if(!contact.isEmpty())
                     {
-                        if(contact.equals("furniture")){
+                        if(contact.equals("telephone")){
                             model.addAttribute("search_product", productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(), Float.parseFloat(ot), Float.parseFloat(Do), 1));
                         } else if(contact.equals("appliances")){
                             model.addAttribute("search_product", productRepository.findByTitleAndCategoryOrderByPriceDesc(search.toLowerCase(), Float.parseFloat(ot), Float.parseFloat(Do), 2));
