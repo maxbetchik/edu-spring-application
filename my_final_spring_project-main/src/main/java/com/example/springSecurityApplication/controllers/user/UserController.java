@@ -27,7 +27,9 @@ public class UserController {
 
     private final ProductService productService;
 
-    public UserController(OrderRepository orderRepository, CartRepository cartRepository, ProductService productService) {
+    public UserController(OrderRepository orderRepository,
+                          CartRepository cartRepository,
+                          ProductService productService) {
         this.orderRepository = orderRepository;
         this.cartRepository = cartRepository;
         this.productService = productService;
@@ -41,7 +43,8 @@ public class UserController {
     @GetMapping("/index")
     public String index(Model model) {
 
-        // Получаем объект аутентификации - > с помощью Spring SecurityContextHolder обращаемся к контексту и на нем вызываем метод аутентификации.
+        // Получаем объект аутентификации - > с помощью Spring SecurityContextHolder обращаемся к контексту и на нем
+        // вызываем метод аутентификации.
         // Из потока для текущего пользователя мы получаем объект, который был положен в сессию после аутентификации
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
